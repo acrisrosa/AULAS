@@ -1,1 +1,17 @@
-<p>tag-paragrafo works!</p>
+<p>Nossa Tag Paragrafo.</p>
+<p>Meu outro Paragrafo.</p>
+
+@for (item of this.numero; track $index) {
+        <p>Meus Dados: {{ item }}</p>
+}
+
+@for (item of this.numero; track $index) {
+    <!-- Property Bind {{}}  -->
+    <p>Meus Dados: meu andar é o {{ item }}</p>
+}
+
+<p>Esta é a formatação <strong>Strong</strong></p>
+
+<p>Esta é a formatação <em>Itálico</em></p>
+
+<p>Esta é a formatação quebra de linha <br> pois vai quebrar a frase no local onde coloco o <strong>br</strong></p>

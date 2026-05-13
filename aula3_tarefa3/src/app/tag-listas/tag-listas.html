@@ -1,1 +1,35 @@
-<p>tag-listas works!</p>
+<h1>Estas são as minhas tag-listas!</h1>
+
+<p> Minha lista <strong>Não ordenada</strong></p>
+<ul>
+    <li>Nossa linha 1</li>
+    <li>Nossa linha 2</li>
+    <li>Nossa linha 3</li>
+</ul>
+
+
+<p> Minha lista <strong>Ordenada</strong></p>
+<ol>
+    <li>Nossa linha</li>
+    <li>Nossa linha</li>
+    <li>Nossa linha</li>
+</ol>
+
+
+<p> Minha lista <strong>Não dinâmica</strong></p>
+<ul>
+    @for (item of this.minhaLista; track $index) {
+        <!-- Interpolação no Angular é chamada de PropertyBind  {{}} -->
+        <li>{{"Minha Lista:" + item.toLocaleUpperCase ()}}</li>
+    }
+    
+</ul>
+
+<p> Minha lista <strong>Dinâmica</strong></p>
+<ol>
+    @for (data of this.minhaListaJS; track $index) {
+        <!-- Por causa do ANY não tenho acesso aos métodos herdados do JS(javascript) -->
+        <li>{{data + "minhaLista"}} </li>  
+    }
+    
+</ol>
