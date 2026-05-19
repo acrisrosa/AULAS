@@ -1,0 +1,43 @@
+<H2
+  >Estas vão ser as minhas <strong><em>Tags-Listas</em></strong></H2
+>
+
+<p>
+  Em relação às listas estas podem ser <strong>ORDENADAS</strong> e <strong>NÃO ORDENADAS</strong>
+</p>
+
+<p>Vamos começar pelas Listas <strong>NÃO ORDENADAS</strong> e neste caso apenas aparece um ponto</p>
+
+<ul>
+  <li>Linha1</li>
+  <li>Linha2</li>
+  <li>Linha3</li>
+</ul>
+
+
+<p>Vamos agora às Listas <strong>ORDENADAS</strong> e neste caso apenas aparece um ponto</p>
+
+<ol>
+  <li>Linha A</li>
+  <li>Linha B</li>
+  <li>Linha C</li>
+</ol>
+
+<p>As nossas listas <strong>NÃO FICAM POR AQUI</strong></p>
+<p>Elas podem ser <strong>Dinâmicas</strong> e <strong>Não Dinâmicas</strong></p>
+
+<p> <strong>LISTA NÃO DINÂMICA</strong></p>
+<ul>
+    @for (item of this.minhaLista; track $index) {
+        <!--Interpolação no Angular e é chamada de PropertyBind {{}} -->
+        <li> {{" Minha Lista: " + item.toLocaleUpperCase ()}} </li>
+    }
+</ul>
+
+<p> <strong>LISTA DINÂMICA</strong></p>
+<ol>
+    @for (data of this.minhaListaJS; track $index) {
+        <!--Interpolação no Angular e é chamada de PropertyBind {{}} -->
+        <li> {{data + " minhaLista "}} </li>
+    }
+</ol>
