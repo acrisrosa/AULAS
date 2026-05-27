@@ -1,1 +1,10 @@
-<p>avatar works!</p>
+<!--se escreverdiv.avatar-container ele cria o módulo com a classe automaticamente-->
+<!--ctrl+ált+f - formata tudo-->
+<div class="avatar-container">
+  <img src="this?.localImage??'/img/avatar.png'" alt="Imagem do avatar" class="avatar" />
+  <!-- Property Bind ou interpolação -->
+  <span class="name">{{ this.localNome }}</span>
+  <!-- Evento de click -->
+  <button (click)="logout()">SignOut</button>
+  <!--<button (mouseover)="logout()">Test</button>-->
+</div>
