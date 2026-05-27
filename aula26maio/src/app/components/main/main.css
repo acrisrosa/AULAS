@@ -1,0 +1,24 @@
+.main{
+
+    min-height: 80vh;     /*vh funciona melhor do que a percentagem*/
+    flex: 1;        /* elastico sem quebrar*/
+    padding: 20px;
+    background: rgba(107, 150, 150, 0.3); /*alpha-ajuste fino*/
+}
+
+/*CONFIGURAÇÃO PARA TELEMÓVEL COM DUAS DIMENSÕES*/
+
+@media(max-width: 768px){
+.main{
+    padding: 15px;
+    }
+}
+
+@media(max-width: 480px){
+.main{
+    padding: 10px;
+    text-align: center;
+    }
+}
+
+/*o COMANDO shift+alt+seta para baixo => copia para baixo*/
