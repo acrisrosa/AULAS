@@ -8,7 +8,8 @@ import { Component } from '@angular/core';
 })
 export class Avatar {
 
-  localNome: string = 'Tony';
+  localNome: string = 'Ana';
+  localImage!: string;
 
   logout() {
 //throw new Error('Method not implemented.');

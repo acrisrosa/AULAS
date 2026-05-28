@@ -1,5 +1,5 @@
 <div class="avatar-container">
-    <img src="" alt="Imagem do avatar" class="avatar"/>
+    <img [src]="this?.localImage ??'/img/avatar1.png'" alt="Imagem do avatar" class="avatar"/>
     <span class="name">{{ this.localNome }}</span>
     <button (click)="logout()">SignOut</button>
 </div>

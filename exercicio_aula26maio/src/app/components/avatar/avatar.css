@@ -25,7 +25,6 @@ button {
 }
 
 /* CONFIGURAÇÃO PARA Tablets*/
-
 @media (max-width:768px) {
     .name {
         font-size: 0.8rem;
@@ -33,11 +32,11 @@ button {
 }
 
 /* CONFIGURAÇÃO PARA Telemóveis*/
-
 @media (max-width:480px) {
 .avatar-container {
     flex-direction: column;
     align-items: center;
+    margin: 5%;
 }
 .avatar {
     width: 35px;
