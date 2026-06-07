@@ -1,0 +1,23 @@
+.main {
+    min-height: 80vh;
+    flex: 1;
+    padding: 20px;
+    background: rgba(107, 150, 150, 0.3);
+}
+
+/* CONFIGURAÇÃO PARA Tablets*/
+
+@media (max-width:768px) {
+    .main {
+        padding: 15px;
+    }
+}
+
+/* CONFIGURAÇÃO PARA Telemóveis*/
+
+@media (max-width:480px) {
+    .main {
+        padding: 10px;
+        text-align: center;
+    }
+}
