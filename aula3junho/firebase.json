@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "/dist/aula3junho/browser",
+    "public": "dist/aula3junho/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
