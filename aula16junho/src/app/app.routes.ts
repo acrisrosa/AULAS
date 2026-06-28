@@ -19,6 +19,10 @@ export const routes: Routes = [
     path: 'ebook/functions',
     loadComponent: () => import('./pages/functions/functions').then((c) => c.Functions),
   },
+      {
+    path: 'ebook/typescript',
+    loadComponent: () => import('./pages/typescript/typescript').then((d) => d.Typescript),
+  },
   {
     path: '**',
     loadComponent: () => import('./pages/interpolacao/interpolacao').then((c) => c.Interpolacao),

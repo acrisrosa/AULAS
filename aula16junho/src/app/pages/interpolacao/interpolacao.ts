@@ -6,4 +6,15 @@ import { Component } from '@angular/core';
   templateUrl: './interpolacao.html',
   styleUrl: './interpolacao.css',
 })
-export class Interpolacao {}
+export class Interpolacao {
+  ///template literal
+  nome: string = 'Tony';
+  idade: number = 42;
+
+  constructor() {
+    const mensagem = `Olá, meu nome é ${this.nome} e tenho ${this.idade} anos`;
+    const mensageSemInterpolacao = 'Olá, meu nome é' + this.nome + 'e tenho' + this.idade + 'anos';
+
+    console.log('Minha Interpolação:', mensagem);
+  }
+}
