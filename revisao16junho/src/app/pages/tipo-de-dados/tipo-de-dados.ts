@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Operadores } from '../operadores/operadores';
 import { Observable, of } from 'rxjs';
 
+type meuObjecto = {nome: string; endereco: string; numero:number; admin:boolean};
+
 @Component({
   selector: 'app-tipo-de-dados',
   imports: [CommonModule], //PERMITE UTILIZAR NO HTML IF, ELSE E O CASE, E ESTÁ INSTALADO NO NODE.MODULES
@@ -19,6 +21,8 @@ export class TipoDeDados implements OnInit {
   localNull2!: null;
   localUndefined: undefined = undefined;
   localUndefined2!: undefined;
+  localObjecto = {nome:'Tony', endereco: 'rua .....', numero:10, admin: false, lado: 'esquerdo'};
+  localObjecto2: meuObjecto = {nome:'Tony', endereco: 'rua .....', numero:10, admin: false};
 
   /**tipo de dados assycronos */
   localPromise: Promise<string> = new Promise<string>((resolve,reject) => {
@@ -31,7 +35,7 @@ export class TipoDeDados implements OnInit {
   });
 
   localObservable$ = new Observable((a) => a.next('Aula de assincronos Observable'));
-  localObservable2$: Observable<string> = of('Aula de assincronos Observables2');
+  localObservable2$: Observable<string> = of('Aula de assincronos Observables2');  //formula mais utilizada
 
   /** construtor do JS */
   constructor() {
@@ -46,6 +50,11 @@ export class TipoDeDados implements OnInit {
     console.log('minha variavel de undefined: ', this.localUndefined);
     //console.log('minha variavel de promise sem Pending: ', this.localPromise);
     //console.log('minha variavel de observable sem Subscribe: ', this.localObservable$);
+    console.log("minha variavel do tipo Objeto: " , this.localObjecto2);
+    console.log("minha variavel do tipo Objeto.nome " , this.localObjecto2.nome);
+    console.log("minha variavel do tipo Objeto.endereco " , this.localObjecto2['endereco']);
+    console.log("minha variavel do tipo Objeto.numero " , this.localObjecto2.numero);
+    console.log("minha variavel do tipo Objeto.admin " , this.localObjecto2['admin']);
   }
 
   /** construtor do Angula */
