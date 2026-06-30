@@ -9,7 +9,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 })
 export class Avatar {
   localNome: string = 'Ana';
-  localImage!: string;
+  localImage!: string;   ////!: desliga variavael
 
   logout() {
     //throw new Error('Method not implemented.');
