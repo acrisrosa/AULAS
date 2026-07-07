@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { IUtilizador } from '../shared/i-utilizador';
 import { DataDummy } from './dummy/sand-box';
+import { catchError, delay, from, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FakeBack {
-  localUtilizador: IUtilizador[] = DataDummy;
+ private localUtilizador: IUtilizador[] = DataDummy; //  isto vem de um SQL ou de umNoSQL
 
   /**1º é a PROMISE */
   // =====================================================
@@ -48,4 +49,31 @@ export class FakeBack {
       throw error;
     }
   }
-}
+
+  // =====================================================
+  // MÉTODO 3 - OBSERVABLE
+  // =====================================================
+  // Observable é muito utilizado no Angular
+  // HttpClient retorna Observable
+  // as vezes temos que converter uma Promise para trabalhar com Observable
+  // =====================================================
+
+  getUtilizadoresObservable(): Observable<IUtilizador[]> {
+    //simula sucesso ou erro
+    const sucesso = Math.random() > 0.5;
+    if (!sucesso) {
+      return throwError(() => new Error('Error 404 Http'));
+    }
+
+    //From() este operador transforma uma promise em Observable
+    //OF este operador transforma um List ou Array ou Objeto em Observable
+    const localPromise: Promise<IUtilizador[]> = this.getUtilizadorPromise();
+    return from(localPromise).pipe(
+      delay(2000),
+      catchError((error) => {
+        console.error("Error No Observable", error);
+        throw error;
+      })
+    ); 
+  }
+} // endclass
