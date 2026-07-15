@@ -21,9 +21,8 @@ export class AssyncTables {
 
   ///utilizador com Observable (typescript)
   localUserObservable$: Observable<IUtilizador[]>;
-  
-  localUserSubscritions: IUtilizador[] = [];
 
+  localUserSubscritions: IUtilizador[] = [];
 
   ///criação das variáveis de error
   errorPromise: LocalError = { errorAssync: false, errorNome: '' };
@@ -45,7 +44,6 @@ export class AssyncTables {
     this.carregarAssyncAwaitPromise();
 
     this.carregarObservable();
-
 
     ///invocar o metodo observable
     this.carregarObservable();
@@ -87,40 +85,45 @@ export class AssyncTables {
   carregarObservable = () => {
     ///falar um pouco sobre RxJS
     ///operador take(1), este cara faz com q apos 1 subscrição o canal de dados seja desligadao
-    this.fakeBack.getUtilizadoresObservable().pipe(
-      take(1),
-      switchMap((res: IUtilizador[]) => {
-      console.log('Nosso Result em carregarObservable(): ' ,res);
-      this.localUserSubscritions=res;
-      this.cdr.detectchanges();
-      return (this.localUserSubscritions = res);
-
-    }), catchError((error) => {
-      console.error('Nosso Error em CarregarAssyncAwaitPromise(): ', error);
-      this.errorObservable={errorAssync: true, errorNome: "Erro no metodo carregarObservable: " + error};
-      return of([]);
-    }),
-  ).subscribe();
-
+    this.fakeBack
+      .getUtilizadoresObservable()
+      .pipe(
+        take(1),
+        switchMap((res: IUtilizador[]) => {
+          console.log('Nosso Result em carregarObservable(): ', res);
+          this.localUserSubscritions = res;
+          this.cdr.detectchanges();
+          return (this.localUserSubscritions = res);
+        }),
+        catchError((error) => {
+          console.error('Nosso Error em CarregarAssyncAwaitPromise(): ', error);
+          this.errorObservable = {
+            errorAssync: true,
+            errorNome: 'Erro no metodo carregarObservable: ' + error,
+          };
+          return of([]);
+        }),
+      )
+      .subscribe();
   };
 
-carregarObservableComSubscribleObjeto = () => {
-
-  this.fakeBack.getUtilizadoresObservable().pipe(
-    take(1),
-    switchMap((res: IUtilizador[]) => {
-      console.log('carrgarobservablecomsubscribleobjecto(): ', res);
-      return res;
-    }),
-  ).subscribe({
-    next:(result) => {console.log("nosso dado: ", result)},
-    error:(e) => console.log("nosso Erro no metodo carregarObservableComSubscribeOjecto()" + e),
-    complete: () => console.log("nosso complete, terminou o Observable")
-  });
-}
-
-
-
-
-
+  carregarObservableComSubscribleObjeto = () => {
+    this.fakeBack
+      .getUtilizadoresObservable()
+      .pipe(
+        take(1),
+        switchMap((res: IUtilizador[]) => {
+          console.log('carrgarobservablecomsubscribleobjecto(): ', res);
+          return res;
+        }),
+      )
+      .subscribe({
+        next: (result) => {
+          console.log('nosso dado: ', result);
+        },
+        error: (e) =>
+          console.log('nosso Erro no metodo carregarObservableComSubscribeOjecto()' + e),
+        complete: () => console.log('nosso complete, terminou o Observable'),
+      });
+  };
 } ///endclass
