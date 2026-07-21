@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class Forms {
 
+
   /**Variavel para receber criar Formulario e capturar os dados */
   protected signInForms: UntypedFormGroup;
 
@@ -32,7 +33,7 @@ export class Forms {
 
 onSubmit() {
 if(!this.signInForms.valid){
-  this.signInForms.pending;
+  /**this.signInForms.pending;*/
   /**Aprendendo a mudar a rota pelo TS(typescript) */
   this.router.navigateByUrl("/");
 }
@@ -52,5 +53,17 @@ goBack = () => {
   this.router.navigateByUrl("./");
 
 } //end goback
+
+gmailAuthentication() {
+this.authService.loginWithGoogle().subscribe(
+  {
+next: (res) => console.log("Meu result from Firebase Authentication", res),
+error: (e) => {
+  console.error("Nosso erro do firebase auth", e)
+  //, this.goBack();
+},
+
+});
+}
 
 } //end class

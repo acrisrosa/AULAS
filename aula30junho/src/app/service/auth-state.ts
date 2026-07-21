@@ -1,8 +1,16 @@
 import { EnvironmentInjector, inject, Injectable, runInInjectionContext } from '@angular/core';
 import { FirebaseService } from './firebase';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
-import { onAuthStateChanged, User } from 'firebase/auth';
+import { BehaviorSubject, catchError, from, Observable, take, tap, throwError } from 'rxjs';
+import {
+  AuthError,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithPopup,
+  User,
+  UserCredential,
+} from 'firebase/auth';
+
 
 @Injectable({
   providedIn: 'root',
@@ -46,11 +54,30 @@ Aqui está o que ele faz em detalhe:
     });
   } // fim metodo de verificação se estamos logados ou não no google
 
+  getUser(): Observable<User | null> {
+    return this.user$.asObservable();
+  }
 
+  isAuthenticated = (): boolean => {
+    return this.user$.value !== null;
+  };
 
-
-
-
-
-  
+  loginWithGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    ///from transforma Promise em Observable
+    return from(signInWithPopup(this.auth, provider)).pipe(
+      ///take () é o operador de dessubscrição
+      take(1),
+      ///este operador pesca dentro do fluxo do pipe uma informação
+      tap((user: UserCredential) => {
+        console.log('Nosso result no Server.ts: ', user);
+        this.routes.navigate(['/about']);
+      }),
+      ///é o operador de captura de error
+      catchError((e: AuthError) => {
+        ///return of (e.message || `Erro desconhecido tente mais tarde`);
+        return throwError(() => new Error(e.message || 'Erro desconhecido tente mais tarde'));
+      }),
+    );
+  }; // fim do service
 } //end class service

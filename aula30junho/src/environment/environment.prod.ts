@@ -4,10 +4,11 @@ export const environment = {
     production: true,
     firebaseConfig: {
  apiKey: keys.apiKey,
-  authDomain: "frontend-cinel-cris-2.firebaseapp.com",
-  projectId: "frontend-cinel-cris-2",
-  storageBucket: "frontend-cinel-cris-2.firebasestorage.app",
-  messagingSenderId: "637204149391",
-  appId: "1:637204149391:web:5606f3070c4c2e61a4acfa"
+  authDomain: "frontendcinel-react-ana.firebaseapp.com",
+  projectId: "frontendcinel-react-ana",
+  storageBucket: "frontendcinel-react-ana.firebasestorage.app",
+  messagingSenderId: "74324338053",
+  appId: "1:74324338053:web:5a26ebd15d582a9cb4d0ec"
 },
 }
+

@@ -13,14 +13,16 @@ import { AuthStateService } from './service/auth-state';
 export class App implements OnInit {
   protected readonly title = signal('exercicio_aula26maio');
 
-  constructor(private authstateservice: AuthStateService) {
-
-
-
-    
-  } //fim construtor
+  constructor(private authstateservice: AuthStateService) {} //fim construtor
 
   ngOnInit(): void {
     this.authstateservice.initAuthListener();
+
+    /**Forma de teste de dados */
+    this.authstateservice.getUser().subscribe({
+      next: (result) => {console.log("Nosso Result do Google no App.ts: ", result)},
+      error: (error) => {console.error("Nosso Error no Auth no Firebase no App.ts: ", error)},
+      complete: () => {console.log("Observable Finalizado no App.ts.")},
+    });
   }
-}
+} // fim da class
