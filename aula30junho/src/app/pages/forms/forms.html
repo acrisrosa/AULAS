@@ -99,7 +99,12 @@
     </div>
 
     <!--botão para google-->
-    <button class="google-btn" type="button" (click)="gmailAuthentication()">
+    <button
+      class="google-btn"
+      type="button"
+      (click)="gmailAuthentication()"
+      [disabled]="this.signInForms.invalid && this.signInForms.touched"
+    >
       <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" />
       SignIn With Google
     </button>

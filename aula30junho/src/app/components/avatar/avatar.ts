@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from 'firebase/auth';
 
 @Component({
   selector: 'app-avatar',
@@ -10,6 +11,7 @@ export class Avatar {
 
   localNome: string = 'Ana';
   localImage!: string;
+  localUser!: User;
 
   logout() {
 //throw new Error('Method not implemented.');
