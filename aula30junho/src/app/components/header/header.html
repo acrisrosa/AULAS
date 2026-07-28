@@ -1,10 +1,13 @@
 <header class="header">
-    <nav class="nav">
-        <div class="links">
-            <a routerLink="/welcome">Welcome</a>
-            <a routerLink="/assync-tables">Assync Tables</a>
-            <a routerLink="/forms">Forms</a>
-        </div>
-        <app-avatar></app-avatar>
-    </nav>
+  <nav class="nav">
+    <div class="links">
+      <a routerLink="/welcome">Welcome</a>
+      <a routerLink="/assync-tables">Assync Tables</a>
+      <a routerLink="/forms">Forms</a>
+    </div>
+    @if (this.localUser$ | async; as userComponentePai) {
+      <!-- o Input é a forma que uma component PAI tem de passar dados para componnte FILHA-->
+        <app-avatar [localUserComponentFilho]="userComponentePai"></app-avatar>
+    }
+  </nav>
 </header>

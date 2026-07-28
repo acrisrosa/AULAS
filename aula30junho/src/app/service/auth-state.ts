@@ -81,5 +81,11 @@ Aqui está o que ele faz em detalhe:
     );
   }; // fim do service
 
-  
+
+  logout () {
+    this.user$.next(null);
+    this.auth.signOut().catch((e) => console.error("Error no Logout do Google", e));
+    this.routes.navigate(['/']);
+  }
+
 } //end class service
